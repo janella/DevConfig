@@ -81,7 +81,7 @@ $sl.Colors.GitBackgroundColor = [ConsoleColor]::DarkGray
 $sl.Colors.GitDefaultColor = [ConsoleColor]::Cyan
 $sl.Colors.WithForegroundColor = [ConsoleColor]::DarkRed
 $sl.Colors.WithBackgroundColor = [ConsoleColor]::Magenta
-$sl.Colors.SessionInfoForegroundColor = [System.ConsoleColor]::DarkRed
+$sl.Colors.SessionInfoForegroundColor = [System.ConsoleColor]::DarkYellow
 $sl.Colors.VirtualEnvBackgroundColor = [System.ConsoleColor]::Red
 $sl.Colors.TimestampColor = [System.ConsoleColor]::White
 
