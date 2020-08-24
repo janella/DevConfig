@@ -48,6 +48,13 @@
         "list":
         [
             {
+                "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
+                "colorScheme" : "Lovelace",
+                "hidden": false,
+                "name": "PowerShell",
+                "source": "Windows.Terminal.PowershellCore"
+            },
+            {
                 "guid": "{29b9daed-c574-461d-94e5-49eff06ec275}",
                 "colorScheme" : "Lovelace",
                 "closeOnExit" : true,
@@ -60,13 +67,6 @@
                 "padding" : "10, 0, 10, 3",
                 "snapOnInput" : true,
                 "useAcrylic" : true
-            },
-            {
-                "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
-                "colorScheme" : "Lovelace",
-                "hidden": false,
-                "name": "PowerShell",
-                "source": "Windows.Terminal.PowershellCore"
             },
             {
                 // Make changes here to the cmd.exe profile.
