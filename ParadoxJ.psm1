@@ -7,7 +7,8 @@ function Write-Theme {
         [string]
         $with
     )
-
+	Write-Host # give some breathing room
+	
     $lastColor = $sl.Colors.PromptBackgroundColor
     $prompt = Write-Prompt -Object $sl.PromptSymbols.StartSymbol -ForegroundColor $sl.Colors.PromptForegroundColor -BackgroundColor $sl.Colors.SessionInfoBackgroundColor
 
