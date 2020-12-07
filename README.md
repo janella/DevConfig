@@ -2,7 +2,7 @@
 
 Setup for Janella's dev environment and command line.
 
-I use Powershell on Windows Terminal and I don't really have a fancy setup.
+I use Powershell on Windows Terminal and I don't really have a fancy setup. These scripts are probably not optimal but they work for me and I can update things easily, so 🤷‍♀️😁.
 
 ## Customising this setup
 
