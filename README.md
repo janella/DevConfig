@@ -2,23 +2,24 @@
 
 Setup for Janella's dev environment and command line.
 
-I use Powershell on Windows Terminal and I don't really have a fancy setup. 
+I use Powershell on Windows Terminal and I don't really have a fancy setup.
 
-## Helper methods in this repo
+## Customising this setup
 
-These helper methods assume that your remote repository is named `origin` and your remote trunk branch is named `master`.
+If you _just want to configure a helper script folder_ you can add the following into your Powershell Profile at `$PROFILE`.
 
-* `gnew [name]` - checkout latest `master` and create a new local branch with a given name from `master`.
-* `gpr` - push the current branch and open a browser window to start a PR.
-* `gpull` - fetch and rebase your current branch on `master`.
-* `gpush` - push your current branch to a remote branch of the same name.
-* `gsweep` - delete all local branches that have been merged with master.
-* `gsync` - fetch latest `master`.
-* `gpatch [number of commits back]` - Add local current changes to a commit `X` commits behind. `gpatch-continue` when ready to complete the update.
-    * You'll need to edit the rebase file after `gpatch`. (the default editor is `vim` - `del` to delete, `i` to switch to insert mode, `esc` to get to commands, and `:wq` to save and exit).
-    * Adapted from _[How to add a changed file to an older not-last commit](https://stackoverflow.com/questions/2719579/how-to-add-a-changed-file-to-an-older-not-last-commit-in-git)_.
+```pwsh
+$psdir="D:\Dev\DevConfig\Scripts" # your script location
+Get-ChildItem "${psdir}\*.ps1" | %{.$_}
+```
+
+The Powershell Profile set up in this repository means that any `.ps1` files in the repository `Scripts` folder will be loaded up when Powershell is loaded.
+
+If you have any more helper scripts toss them into that folder.
 
 ## Fresh machine setup
+
+This is my setup - it may not be exactly what you want and it will replace things completely. 😉
 
 1. Clone this repository.
 2. Follow steps 1 and 3 in [Scott Hanselman's blog Windows Terminal blog](https://www.hanselman.com/blog/how-to-make-a-pretty-prompt-in-windows-terminal-with-powerline-nerd-fonts-cascadia-code-wsl-and-ohmyposh).
@@ -35,5 +36,19 @@ If I make any local edits/updates to my setup, I don't want to faff around copyi
     * Using the argument `-ReplaceProfile` will also copy over the Powershell profile, as above.
 2. Fix anything you need to before committing and updating.
 
+## Helper methods in this repo
+
+These helper methods assume that your remote repository is named `origin` and your remote trunk branch is named `master`.
+
+* `gnew [name]` - checkout latest `master` and create a new local branch with a given name from `master`.
+* `gpr` - push the current branch and open a browser window to start a PR.
+* `gpull` - fetch and rebase your current branch on `master`.
+* `gpush` - push your current branch to a remote branch of the same name.
+* `gsweep` - delete all local branches that have been merged with master.
+* `gsync` - fetch latest `master`.
+* `gpatch [number of commits back]` - Add local current changes to a commit `X` commits behind. `gpatch-continue` when ready to complete the update.
+    * You'll need to edit the rebase file after `gpatch`. (the default editor is `vim` - `del` to delete, `i` to switch to insert mode, `esc` to get to commands, and `:wq` to save and exit).
+    * Adapted from _[How to add a changed file to an older not-last commit](https://stackoverflow.com/questions/2719579/how-to-add-a-changed-file-to-an-older-not-last-commit-in-git)_.
+
 # Handy commands because I always forget them
-> `$PROFILE` - Get the location of your Powershell Profile.
+* `$PROFILE` - Get the location of your Powershell Profile.
