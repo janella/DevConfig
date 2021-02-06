@@ -40,7 +40,7 @@
         "defaults":
         {
             // Put settings here that you want to apply to all profiles.
-            "startingDirectory" : "D:\\Dev",
+            "startingDirectory" : "C:\\Dev",
             "useAcrylic" : true,
             "acrylicOpacity" : 0.9,
             "fontFace": "Cascadia Code PL"
@@ -58,11 +58,11 @@
                 "guid": "{29b9daed-c574-461d-94e5-49eff06ec275}",
                 "colorScheme" : "Lovelace",
                 "closeOnExit" : true,
-                "commandline" : "D:\\Program Files\\Git\\usr\\bin\\bash.exe -i -l",
+                "commandline" : "C:\\Program Files\\Git\\usr\\bin\\bash.exe -i -l",
                 "cursorColor" : "#FFFFFF",
                 "cursorShape" : "bar",
                 "fontSize" : 10,
-                "icon" : "D:\\Program Files\\Git\\mingw64\\share\\git\\git-for-windows.ico",
+                "icon" : "C:\\Program Files\\Git\\mingw64\\share\\git\\git-for-windows.ico",
                 "name" : "Bash",
                 "padding" : "10, 0, 10, 3",
                 "snapOnInput" : true,

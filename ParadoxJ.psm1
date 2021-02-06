@@ -88,7 +88,7 @@ $sl.Colors.TimestampColor = [System.ConsoleColor]::White
 Set-PSReadLineOption -Colors @{
     "Parameter" = [ConsoleColor]::White
     "Operator" = [ConsoleColor]::White
-    "Prediction" = [ConsoleColor]::DarkYellow
+    "InlinePrediction" = [ConsoleColor]::DarkYellow
 }
 
 #Set-PSReadLineOption -PredictionSource History
