@@ -17,6 +17,7 @@ function gnew {
     $branch = &git rev-parse --abbrev-ref HEAD
     git checkout -b $args origin/master
     git branch -d $branch
+    git branch --unset-upstream # don't track master so we don't default to pushing master :)
 }
 
 function gpull {
