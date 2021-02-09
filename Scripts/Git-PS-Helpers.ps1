@@ -1,11 +1,16 @@
 # I stole `gpr`, `gsync`, `gnew`, `gpull/push`, and `gsweep` from @arical 🤗
 
 function gpr {
-    gpush
     $branch = &git rev-parse --abbrev-ref HEAD
+    if ($branch -eq "master")
+    {
+        throw "You can't create a pull request off master, dummy!"
+    }
+    gpush
     $remote = &git remote get-url --push origin
+
     $pr_url = $remote.Replace(".git", "")
-    Start-Process "$pr_url/pull/new/$branch"
+    Start-Process Chrome "$pr_url/pull/new/$branch"
 }
 
 function gsync {
