@@ -1,0 +1,73 @@
+#!/bin/zsh
+# I stole `gpr`, `gsync`, `gnew`, `gpull/push`, and `gsweep` from @arical 🤗
+
+mainBranchName="main"
+browserName="Google Chrome" # should match the process you want to launch
+
+gsync(){
+    git fetch origin $mainBranchName:$mainBranchName
+}
+
+gnew(){
+    newBranchName=$1
+    git fetch
+    branch=$(git rev-parse --abbrev-ref HEAD)
+    git checkout -b $newBranchName origin/$mainBranchName
+    git branch -d $branch
+    git branch --unset-upstream # don't track main so we don't default to pushing main :)
+}
+
+gpull(){
+    git fetch
+    branch=$(git rev-parse --abbrev-ref HEAD)
+    git pull origin $branch --rebase
+}
+
+gpush(){
+    branch=$(git rev-parse --abbrev-ref HEAD)
+    git push origin $branch
+}
+
+gsweep(){
+    # fetch all branch names that 
+    rawBranches=$(git branch --merged)
+    branchArray=(${(f)rawBranches})
+
+    for rawBranch in $branchArray; do (
+        branchToDelete=$(echo $rawBranch | xargs) # trim whitespace
+        if [[ ($branchToDelete =~ "^\*") || ("$branchToDelete" == $mainBranchName) ]]
+        then # don't delete current branch
+            continue
+        fi
+        git branch -d $branchToDelete
+    ) done
+}
+
+# https://stackoverflow.com/questions/2719579/how-to-add-a-changed-file-to-an-older-not-last-commit-in-git
+gpatch(){
+    numCommitsBack=$1
+    git stash
+    git rebase -i HEAD~$numCommitsBack
+    git stash pop
+}
+
+gpatch-continue(){
+    git add .
+    git commit --amend --no-edit
+    git rebase --continue
+}
+
+gnpr(){
+    branch=$(git rev-parse --abbrev-ref HEAD)
+    
+    if [[ "$branch" == "$mainBranchName" ]]
+    then
+        echo "You can't create a pull request off $mainBranchName!"
+        exit 1
+    fi
+    gpush
+    remote=$(git remote get-url --push origin)
+    pr_url=${remote//".git"/""} # get rid of the suffix, so we have a nice URL
+    echo 
+    open -a $browserName "$pr_url/pull/new/$branch"
+}
